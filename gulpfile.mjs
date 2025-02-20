@@ -1424,6 +1424,7 @@ gulp.task(
           .pipe(
             postcss([
               discardCommentsCSS(),
+              postcssDarkThemeClass(),
               autoprefixer(MOZCENTRAL_AUTOPREFIXER_CONFIG),
             ])
           )
@@ -1434,6 +1435,7 @@ gulp.task(
           .pipe(
             postcss([
               discardCommentsCSS(),
+              postcssDarkThemeClass(),
               autoprefixer(MOZCENTRAL_AUTOPREFIXER_CONFIG),
             ])
           )
@@ -2163,7 +2165,7 @@ gulp.task(
       }
 
       const { WebServer } = await import("./test/webserver.mjs");
-      const server = new WebServer({ port });
+      const server = new WebServer({ port, host: "0.0.0.0" });
       server.start();
     }
   )
